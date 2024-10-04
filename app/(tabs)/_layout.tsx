@@ -1,37 +1,38 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import { FontAwesome } from "@expo/vector-icons";
+import { Tabs } from "expo-router";
+import { blue } from "react-native-reanimated/lib/typescript/reanimated2/Colors";
 
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+export default function () {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-      }}>
+    <Tabs  screenOptions={{ tabBarActiveTintColor: "blue", headerShown:false }}>
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+          title: "For You",
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name="home" size={28} color={color} />
           ),
         }}
-      />
+      ></Tabs.Screen>
       <Tabs.Screen
         name="explore"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+          title: "Explore",
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name="search" size={28} color={color} />
           ),
         }}
-      />
+      ></Tabs.Screen>
+      <Tabs.Screen
+        name="account"
+        options={{
+          title: "Account",
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name="user" size={28} color={color} />
+          ),
+        }}
+      ></Tabs.Screen>
+   
     </Tabs>
   );
 }
